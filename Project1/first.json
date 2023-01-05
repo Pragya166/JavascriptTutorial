@@ -1,0 +1,12 @@
+{
+    "name":"john",
+    "address":"LA",
+    "age":24,
+    "isStudent":true,
+    "marks":{
+        "maths":67,
+        "science":99,
+        "english":67,
+        "date":[2,4,8,10,{"a":true}]
+    }
+}

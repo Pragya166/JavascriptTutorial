@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="submit" onclick="PrintDate()">Click me </button>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <button type="submit" onclick="window.print()">print this page</button>
+   <script>
+    // function PrintDate()
+    // {
+    //     document.getElementById('demo').innerHTML=Date();
+    // }
+    // function Square(x)
+    // {
+    //     return x*x;
+    // }
+    text="";
+    text1="";
+
+ //document.getElementById('demo').innerHTML=Square(4);
+ let zoo=new Map([["Tiger",22],["Lion",5],["Monkey",22]]);
+ zoo.forEach(myFunction);
+ function myFunction(value,key)
+ {
+    text+=key + " " +value +`<br>`;
+ }
+ document.getElementById('demo').innerHTML=text;
+ for(let [key,value] of zoo)
+ {
+text1+=key+":"+value + `<br>`;
+ }
+ document.getElementById('demo1').innerHTML=text1;
+   </script>
+</body>
+</html>

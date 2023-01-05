@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+</head>
+<body>
+    <form>
+        <label>Name</label>
+        <input type="text" id="fullName"/><br><br>
+        <label>Address</label>
+        <input type="text" id="address"/> <br><br>
+        <label>Email</label>
+        <input type="text" id="email"/> <br><br>
+        <label>phone number</label>
+        <input type="text" id="phone"/> <br><br>
+
+        
+        <input type="button" id="buttonadd" onclick="OnFormSubmit()" value="Add"/>
+    </form>
+    <table id="mytable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <script>
+         let StudentList=[];
+        let documentMode='add';
+        let ElementIndex=null;
+        function OnFormSubmit()
+        {
+            if(documentMode=='add')
+            {
+                AddRow();
+            }
+            else if(documentMode=='edit')
+            {
+            var name=document.getElementById("fullName").value;
+            var address=document.getElementById("address").value;
+            var email=document.getElementById("email").value;
+            var phone=document.getElementById("phone").value;
+            
+            let student={
+            Name:name,
+            Address:address,
+            Email:email,
+            Phone:phone
+          }
+
+          StudentList[ElementIndex]=student;
+          display(StudentList);
+          resetForm();
+          documentMode="add";
+          document.getElementById('buttonadd').value='Add';
+            }
+        }
+       
+        function AddRow()
+        {
+            var name=document.getElementById("fullName").value;
+            var address=document.getElementById("address").value;
+            var email=document.getElementById("email").value;
+            var phone=document.getElementById("phone").value;
+            
+          let student={
+            Name:name,
+            Address:address,
+            Email:email,
+            Phone:phone
+          }
+          StudentList.push(student);
+          display(StudentList);
+          resetForm();
+        }
+        function display(StudentList)
+        {
+            let html='';
+            StudentList.forEach(function(student,index){
+                html+=`<tr>
+                <td>${student.Name}</td>
+                <td>${student.Address}</td>
+                <td>${student.Email}</td>
+                <td>${student.Phone}</td>
+                <td>
+                    <button type="button" onclick="Edit(${index})">Edit</button>
+                    <button type="button" onclick="Delete(${index})">Delete</button>
+                    </td>
+                    </tr>
+                    `;
+            });
+            document.getElementById('tbody').innerHTML=html;
+
+        }
+        function Delete(id)
+        {
+            StudentList.splice(id,1);
+            display(StudentList);
+        }
+        function Edit(id)
+        { 
+          
+            let currentData=StudentList[id];
+            documentMode='edit';
+            document.getElementById('buttonadd').value="Update";
+            document.getElementById('fullName').value=currentData.Name;
+            document.getElementById('address').value=currentData.Address;
+            document.getElementById('email').value=currentData.Email;
+            document.getElementById('phone').value=currentData.Phone;
+            ElementIndex=id;
+
+        }
+        function resetForm(){
+            document.getElementById('fullname').value="";
+          document.getElementById('address').value="";
+          document.getElementById('email').value="";
+          document.getElementById('phone').value="";
+          SelectedRow=null;
+        }
+    
+    </script>
+    
+</body>
+</html>

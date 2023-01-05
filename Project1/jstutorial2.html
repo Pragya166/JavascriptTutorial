@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+     (function () {
+  document.getElementById("demo").innerHTML = "Hello! I called myself";
+})();
+      let  days=["Sun","Mon","Tue","Wed","thu"];
+        let text='';
+        for(let i=0;i<days.length;i++)
+        {
+            text+=days[i]+`<br>`;
+        }
+      // document.getElementById('demo').innerHTML=text;
+       let friends=["john","Rachel","monica","ross"];
+       for(let i=0;i<friends.length;i++){
+        console.log(friends[i][1]);
+       }
+       for(num in friends){
+        console.log(friends[num]);
+       }
+       for(elements of friends)
+       {
+        console.log(elements);
+       }
+       friends.forEach(function f(elements){
+        console.log(elements);
+       })
+       let StudentList=[
+        {fname:"Pragya",
+        lname:"Paudyal",
+        age:22,
+        salary:35000},
+        {
+        fname:"karuna",
+        lname:"Paudyal",
+        age:24,
+        salary:350000
+    }
+       ]
+
+       let person={
+        fname:"Pragya",
+        lname:"Paudyal",
+        age:22,
+        salary:35000
+       }
+       console.log(person.fname[3]);
+      console.log( person["fname"]);
+      for(keys in person)
+      console.log(person[keys]);
+     for(elements of StudentList)
+       {
+        console.log(elements.age);
+   }
+    //   StudentList.forEach(function f(student,index)
+    //   {
+    //     console.log(student);
+    //     console.log(Index);
+    //   });
+      const fruitrate=new Map([
+        ["apple",110],
+        ["Mango",250],
+        ["banana",100]
+    ]);
+      fruitrate.set(["grapes",200]);
+    console.log(fruitrate.get("Mango"));
+    class Student{
+  constructor(name,year)
+  {
+    this.name=name;
+    this.year=year;
+  }
+  age(){
+    let date=new Date();
+    return date.getFullYear-this.year;
+  }
+}
+
+    const myStudent=new Student("pppppp","2000");
+    console.log("My name is"+myStudent.name);
+    let y=myStudent.age();
+    console.log(y);
+
+const obj={
+  counter:0
+}
+Object.defineProperty(obj,"reset",{
+  get:function(){
+    this.counter=0;
+  }
+
+});
+Object.defineProperty(obj,"increment",{
+  get:function(){
+    this.counter++;
+  }
+});
+Object.defineProperty(obj,"add",{
+  set:function(value){
+    this.counter+=value;
+  }
+})
+Object.defineProperty(obj,"sub",{
+  set:function(value){
+    this.counter-=value;
+  }
+})
+function car(name,year,color){
+  this.name=name,
+  this.year=year,
+  this.color=color
+}
+let myCar=new car("BMW","2000","red");
+let yourCar=new car("Audi","2000","blue");
+const square=function(n,m){
+  return n**m;
+}
+let newFunc=new Function("a","b","return a*b");
+const x=(a,b)=>a*b;
+let people='{"name":"John", "age":30, "car":null}';
+let myobj=JSON.parse(people);
+let textme="";
+for(const x in myobj)
+{
+  textme+=myobj[x]+",";
+}
+document.getElementById("demo").innerHTML=textme;
+let cars='{"name":"John","age":30,"cars":["Ford", "BMW", "Fiat"]}';
+
+
+
+document.getElementById("demo").innerHTML+=cars;
+let mycars=JSON.parse(cars);
+document.getElementById("demo").innerHTML=mycars;
+textme="";
+for(let i in mycars.cars)
+{
+  textme+=mycars.cars[i]+",";
+}
+document.getElementById("demo").innerHTML=textme;
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image</title>
+</head>
+<body>
+   <label for="">Image</label>
+   <input type="file" id="uploadImg">
+   <input type="button" onclick="AddImage()" value="Add"> 
+</body>
+<script>
+    $("#UploadImage").on("change", function () {
+
+var files = !!this.files ? this.files : [];
+
+
+var type = files[0].type;
+var size = (files[0].size / 1024) / 1024;
+if (size <= 6) {
+    if (type == 'image/jpeg' || type == 'image/bmp' || type == 'image/gif' || type == 'application/pdf') {
+        type == 'application/pdf' ? 'pdf' : 'image';
+       
+
+        var reader = new FileReader(); // instance of the FileReader            
+        reader.readAsDataURL(files[0]); // read the local file  
+
+        reader.onloadend = function (event) { // set image data as background of div 
+
+
+            var dataUri = event.target.result
+            self.file(dataUri);
+
+
+        }
+    }
+    else {
+        msg('Only image and pdf are supported');
+       
+    }
+
+}
+else {
+    msg('file size is too large upto 6 mb is supported');
+}
+
+});
+</script>
+</html>

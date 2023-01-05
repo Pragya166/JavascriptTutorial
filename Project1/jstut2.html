@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <button id="buttonme">Click me</button>
+    <script>
+        // let hello=()=>{
+        //     document.getElementById("demo").innerHTML="Hello World";
+        // }
+       // let number =parseInt(prompt("Enter a number"));
+      //  document.getElementById("buttonme").addEventListener('click',hello);
+        let x="1";
+        let y=+x;
+        let d=new Date();
+        t="";
+        let person={
+            name:"Pragya",
+            age:22,
+            address:[
+                {
+                    category:"permanent",city:"Kathmandu",contact:["12334","56789"]
+                },
+                {
+                    category:"temporary",city:"Pokhara"  ,contact:["98765","543222"]
+                }
+                
+            ],
+            date:new Date(),
+            DOBirth: function(){
+                return 2000;
+            },
+            get lang(){
+                return this.language;
+            },
+            set lang(lang){
+this.language=lang;
+            }
+                
+            
+        }
+        for(let i in person.address)
+        {
+        for(let j in person.address[i].contact)
+        {
+            document.getElementById("demo").innerHTML=(person.address[i].city +person.address[i].contact[j]);
+        }
+
+        }
+        for(let l in person)
+        {
+            t+=person[l];
+        }
+
+        document.getElementById("demo").innerHTML=t;
+        const myArray=Object.values(person);
+        console.log(myArray);
+        person.DOBirth=person.DOBirth.toString();
+        document.getElementById("demo").innerHTML=JSON.stringify(person);
+       // console.log(person.DOBirth());
+        let friends=["Rachel","Ross","Joey","Chandler","Monica","Pheobe"];
+        text="";
+        function flist(){
+            
+            for(elements in friends)
+            {
+               text+=`<li>`+friends[elements]+`</li>`;
+            }
+            return text;
+        }
+        person.lang="english";
+        document.getElementById("demo").innerHTML +=flist();
+        document.getElementById("demo").innerHTML +=person.lang; //JSON.stringify(friends);
+    </script>
+</body>
+</html>

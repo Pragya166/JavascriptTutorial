@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="ShowName()">Show</button>
+    <button onclick="printname()">Print Name </button>
+    <form method="POST" action="#" onsubmit="return validate()">
+        <input type="text" placeholder="Name" id="name"/>
+        <span id="fname"></span>
+        <input type="text" placeholder="Password" id="pword"/>
+        <input type="button" value="Submit" />
+    </form>
+    <h1 onclick="this.innerHTML='oops'">Hello</h1>
+    <h1 onmouseover="over(this)" onmouseout="out(this)">Hi</h1>
+    <div id="myDiv" style="background-color: red;">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet deleniti, dicta alias molestias voluptates minima! Quia sit voluptatibus atque odit possimus quam aspernatur dicta. Delectus debitis explicabo natus aspernatur velit.
+<button id="RemoveEvent" onclick="RemoveHandler()">Remove</button></div>
+<p id="demo"></p>
+<div id="para">
+<p id="child">This is my paragraph</p>
+</div>
+<p>hello</p>
+<p>I</p>
+<p>am</p>
+<p>developer</p>
+<button onclick="red()">red</button>
+<button onclick="green()">green</button>
+<button onclick="blue()">blue</button>
+    
+</body>
+
+<script>
+    const myCollection=document.getElementsByTagName("p");
+const red=()=>{
+for(i=0;i<myCollection.length;i++)
+{
+    myCollection[i].style.color="red";
+}
+}
+const green=()=>{
+for(i=0;i<myCollection.length;i++)
+{
+    myCollection[i].style.color="green";
+}
+}
+const blue=()=>{
+for(i=0;i<myCollection.length;i++)
+{
+    myCollection[i].style.color="blue";
+}
+}
+
+    const para=document.createElement('p');
+    const text=document.createTextNode("Hello me.You can do it");
+    para.appendChild(text);
+    const element=document.getElementById('para');
+    const chile=document.getElementById('child');
+    element.insertBefore(para,chile);
+    element.remove();
+    document.getElementById('myDiv').addEventListener("mousemove",myFunction);
+    function myFunction(){
+        document.getElementById('demo').innerHTML=Math.random();
+    }
+    function RemoveHandler(){
+        document.getElementById('myDiv').removeEventListener("mousemove",myFunction);
+    }
+    
+
+    function over(obj){
+        obj.innerHTML="release";
+    }
+    function out(obj){
+        obj.innerHTML="thank you";
+    }
+
+   
+
+    function validate(){
+        var name=document.getElementById('name').value;
+        console.log(name);
+    
+    var pword=document.getElementById('pword').value;
+ if(name=="")
+ {
+    
+    alert("Name cannot be null");
+    document.getElementById('fname').innerHTML='Name cannot be null';
+    return false;
+ }
+ return true;
+    }
+    let person={firstname:"Pragya",
+    lastname:"asdf",
+    fullname:function(){
+        return this.firstname+" "+this.lastname
+    }
+    }
+    function ShowName(){
+document.write(person.fullname());
+    }
+    function printname(){
+result=printname1('Pragya','Paudyal');
+console.log(result);
+    }
+function printname1(fname,lname){
+var full;
+full=fname+" "+lname;
+return full;
+    }
+
+
+</script>
+</html>
